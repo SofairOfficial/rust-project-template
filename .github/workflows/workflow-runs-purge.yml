@@ -22,3 +22,11 @@ jobs:
           repository: ${{ github.repository }}
           retain_days: 30
           keep_minimum_runs: 6
+      - name: Delete runs of wpurge workflow run
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          delete_workflow_pattern: "Purge workflow runs automatically"
+          retain_days: 3
+          keep_minimum_runs: 3
