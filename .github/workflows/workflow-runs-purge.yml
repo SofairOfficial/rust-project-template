@@ -1,7 +1,8 @@
 # Workflow automatically executed so that to clean up workflow runs pilling in the GitHub Actions tab
 #
 # By default, workflow runs older than 30 days (see 'retain_days' parameter) are removed, every day at
-# midnight (see and 'cron' parameters, respectively).
+# midnight (see and 'cron' parameters, respectively). The workflow purges his own run to only keep
+# 3 of them in a second step (see 'keep_minimum runs').
 # A token with the necessary permission for deleting workflow runs must be provided or the 'github.token'
 # can also be used.
 name: Purge workflow runs automatically
@@ -22,7 +23,7 @@ jobs:
           repository: ${{ github.repository }}
           retain_days: 30
           keep_minimum_runs: 6
-      - name: Delete runs of wpurge workflow run
+      - name: Delete runs of purge workflow runs
         uses: Mattraks/delete-workflow-runs@v2
         with:
           token: ${{ github.token }}

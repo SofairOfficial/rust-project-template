@@ -1,3 +1,6 @@
+# Workflow automatically executed to check if a pull request has label `status: in progress` to prevent
+# merging incomplete work
+
 name: Check label in-progress to prevent merging
 
 on:
